@@ -1,4 +1,4 @@
-import SearchScreen from "./SearchScreen";
+import SearchScreen from "../SearchScreen";
 
 export const screens = [
   {
@@ -22,3 +22,9 @@ export const screens = [
 export const stackNavigatorRoutes = screens.reduce((prev, curr) => {
   return { ...prev, [curr.screenTitle]: curr.component };
 }, {});
+
+export const API_URLS = {
+  yelp: {
+    url: `https://api.yelp.com/v3/businesses`,
+  },
+};
