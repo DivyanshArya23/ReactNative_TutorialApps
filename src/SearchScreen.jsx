@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SearchBar from "./components/SearchBar";
 import { apiEndpoints } from "./config/apiEndpoints";
@@ -9,11 +9,11 @@ const SearchScreen = () => {
   const [results, setResults] = useState([]);
   const [error, setError] = useState("");
 
-  const searchAPI = async () => {
+  const searchAPI = async (searchKeyword) => {
     try {
       const res = await axios.get(apiEndpoints.search, {
         params: {
-          term: searchTerm,
+          term: searchKeyword,
           limit: 50,
           location: "san jose",
         },
@@ -21,20 +21,26 @@ const SearchScreen = () => {
       setResults(res?.data?.businesses);
     } catch (error) {
       setResults([]);
-      setError(error?.message ? JSON.stringift(error?.message) : '')
+      setError("Something Went Wrong");
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    searchAPI("pasta");
+  }, []);
 
   return (
     <View>
       <SearchBar
         value={searchTerm}
         onChange={setSearchTerm}
-        onSubmit={searchAPI}
+        onSubmit={() => {
+          searchAPI(searchTerm);
+        }}
       />
       <Text>{searchTerm}</Text>
-      <Text>{error}</Text>
+      {error ? <Text>{error}</Text> : null}
       <Text> We have found {results?.length} results</Text>
     </View>
   );
