@@ -7,6 +7,7 @@ import axios from "./utils/axios/yelp";
 const SearchScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  const [error, setError] = useState("");
 
   const searchAPI = async () => {
     try {
@@ -20,6 +21,7 @@ const SearchScreen = () => {
       setResults(res?.data?.businesses);
     } catch (error) {
       setResults([]);
+      setError(error?.message ? JSON.stringift(error?.message) : '')
       console.log(error);
     }
   };
@@ -32,6 +34,7 @@ const SearchScreen = () => {
         onSubmit={searchAPI}
       />
       <Text>{searchTerm}</Text>
+      <Text>{error}</Text>
       <Text> We have found {results?.length} results</Text>
     </View>
   );

@@ -23,8 +23,3 @@ export const stackNavigatorRoutes = screens.reduce((prev, curr) => {
   return { ...prev, [curr.screenTitle]: curr.component };
 }, {});
 
-export const API_URLS = {
-  yelp: {
-    url: `https://api.yelp.com/v3/businesses`,
-  },
-};
