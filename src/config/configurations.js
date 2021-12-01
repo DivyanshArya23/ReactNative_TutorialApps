@@ -1,4 +1,4 @@
-import SearchScreen from "../SearchScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 export const screens = [
   {
