@@ -1,3 +1,4 @@
-export const apiEndpoints = {
-  search: '/search',
+const apiEndpoints = {
+  search: "/search",
 };
+export default apiEndpoints;

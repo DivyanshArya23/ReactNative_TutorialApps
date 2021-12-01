@@ -22,4 +22,3 @@ export const screens = [
 export const stackNavigatorRoutes = screens.reduce((prev, curr) => {
   return { ...prev, [curr.screenTitle]: curr.component };
 }, {});
-

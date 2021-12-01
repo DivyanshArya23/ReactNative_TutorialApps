@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
-import { vars } from "../assets/vars";
+import vars from "../assets/vars";
 import { Feather } from "@expo/vector-icons";
 
 const SearchBar = ({

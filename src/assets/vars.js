@@ -1,3 +1,4 @@
-export const vars = {
+const vars = {
   grey: "#ddd",
 };
+export default vars;

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../axios/yelp";
-import { apiEndpoints } from "../../config/apiEndpoints";
+import apiEndpoints from "../../config/apiEndpoints";
 
 const useBusiness = () => {
   const [results, setResults] = useState([]);
@@ -16,10 +16,9 @@ const useBusiness = () => {
         },
       });
       setResults(res?.data?.businesses);
-    } catch (error) {
+    } catch (err) {
       setResults([]);
       setError("Something Went Wrong");
-      console.log(error);
     }
   };
 
