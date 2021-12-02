@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useBusiness from '../utils/hooks/useBusiness';
 import BusinessList from '../components/BusinessList';
@@ -10,7 +10,7 @@ const SearchScreen = function () {
   const [searchAPI, results, error] = useBusiness();
 
   return (
-    <View>
+    <>
       <SearchBar
         value={searchTerm}
         onChange={setSearchTerm}
@@ -20,12 +20,26 @@ const SearchScreen = function () {
       />
       <Text>{searchTerm}</Text>
       {error ? <Text>{error}</Text> : null}
-      <Text> We have found {results?.length} results</Text>
-      <BusinessList title="Cost Effective" list={filterByPrice(results, '$')} />
-      <BusinessList title="Bit Pricier" list={filterByPrice(results, '$$')} />
-      <BusinessList title="Big Spender" list={filterByPrice(results, '$$$')} />
-    </View>
+      {/* <Text> We have found {results?.length} results</Text> */}
+      <ScrollView>
+        <BusinessList
+          title="Cost Effective"
+          list={filterByPrice(results, '$')}
+        />
+        <BusinessList title="Bit Pricier" list={filterByPrice(results, '$$')} />
+        <BusinessList
+          title="Big Spender"
+          list={filterByPrice(results, undefined)}
+        />
+      </ScrollView>
+    </>
   );
 };
 
 export default SearchScreen;
+
+const styles = StyleSheet.create({
+  parent: {
+    // flex: 1,
+  },
+});
