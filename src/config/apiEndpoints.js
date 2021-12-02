@@ -1,4 +1,4 @@
 const apiEndpoints = {
-  search: "/search",
+  search: '/search',
 };
 export default apiEndpoints;

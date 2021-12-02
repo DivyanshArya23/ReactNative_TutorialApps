@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import axios from "../axios/yelp";
-import apiEndpoints from "../../config/apiEndpoints";
+import { useState, useEffect } from 'react';
+import axios from '../axios/yelp';
+import apiEndpoints from '../../config/apiEndpoints';
 
 const useBusiness = () => {
   const [results, setResults] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const searchAPI = async (searchKeyword) => {
     try {
@@ -12,18 +12,18 @@ const useBusiness = () => {
         params: {
           term: searchKeyword,
           limit: 50,
-          location: "san jose",
+          location: 'san jose',
         },
       });
       setResults(res?.data?.businesses);
     } catch (err) {
       setResults([]);
-      setError("Something Went Wrong");
+      setError('Something Went Wrong');
     }
   };
 
   useEffect(() => {
-    searchAPI("pasta");
+    searchAPI('pasta');
   }, []);
 
   return [searchAPI, results, error];

@@ -1,4 +1,4 @@
 const vars = {
-  grey: "#ddd",
+  grey: '#ddd',
 };
 export default vars;

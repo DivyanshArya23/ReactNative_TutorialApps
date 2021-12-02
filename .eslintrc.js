@@ -1,16 +1,16 @@
 module.exports = {
   extends: [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:prettier/recommended",
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
   ],
-  parser: "@babel/eslint-parser",
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
     requireConfigFile: false,
   },
   env: {
@@ -20,10 +20,11 @@ module.exports = {
     jest: true,
   },
   rules: {
-    "no-use-before-define": "off",
-    "react/jsx-filename-extension": "off",
-    "react/prop-types": "off",
-    "comma-dangle": "off",
+    'no-use-before-define': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/prop-types': 'off',
+    'comma-dangle': 'off',
+    'func-names': 'off',
   },
   globals: {
     fetch: false,

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import SearchBar from "../components/SearchBar";
-import useBusiness from "../utils/hooks/useBusiness";
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
+import SearchBar from '../components/SearchBar';
+import useBusiness from '../utils/hooks/useBusiness';
 
-const SearchScreen = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+const SearchScreen = function () {
+  const [searchTerm, setSearchTerm] = useState('');
   const [searchAPI, results, error] = useBusiness();
 
   return (
@@ -24,5 +24,3 @@ const SearchScreen = () => {
 };
 
 export default SearchScreen;
-
-const styles = StyleSheet.create({});

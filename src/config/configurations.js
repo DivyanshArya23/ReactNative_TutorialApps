@@ -1,21 +1,9 @@
-import SearchScreen from "../screens/SearchScreen";
+import SearchScreen from '../screens/SearchScreen';
 
 export const screens = [
   {
-    screenTitle: "Search",
+    screenTitle: 'Search',
     component: SearchScreen,
-  },
-  {
-    screenTitle: "Search2",
-    component: "SearchScreen2",
-  },
-  {
-    screenTitle: "Search3",
-    component: "SearchScreen3",
-  },
-  {
-    screenTitle: "Search4",
-    component: "SearchScreen4",
   },
 ];
 
