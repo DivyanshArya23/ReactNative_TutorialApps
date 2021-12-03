@@ -1,4 +1,4 @@
-import ResultShowScreen from '../screens/ResultShowScreen';
+import BusinessShowScreen from '../screens/BusinessShowScreen';
 import SearchScreen from '../screens/SearchScreen';
 
 export const screens = [
@@ -7,8 +7,8 @@ export const screens = [
     component: SearchScreen,
   },
   {
-    screenTitle: 'SearchResult',
-    component: ResultShowScreen,
+    screenTitle: 'BusinessResult',
+    component: BusinessShowScreen,
   },
 ];
 

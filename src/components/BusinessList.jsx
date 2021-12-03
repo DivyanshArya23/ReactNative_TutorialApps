@@ -20,7 +20,9 @@ const BusinessList = function ({ title, list, navigation }) {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('SearchResult');
+              navigation.navigate('BusinessResult', {
+                id: item.id,
+              });
             }}
           >
             <BusinessDetail item={item} />
