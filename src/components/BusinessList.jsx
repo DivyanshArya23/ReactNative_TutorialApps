@@ -1,20 +1,34 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import BusinessDetail from './BusinessDetail';
 
-const BusinessList = function ({ title, list }) {
-  return (
+const BusinessList = function ({ title, list, navigation }) {
+  return list.length ? (
     <View style={styles.parent}>
       <Text style={styles.title}>{title}</Text>
       <FlatList
         horizontal
         data={list}
         keyExtractor={(ele) => ele.id}
-        renderItem={({ item }) => <BusinessDetail item={item} />}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SearchResult');
+            }}
+          >
+            <BusinessDetail item={item} />
+          </TouchableOpacity>
+        )}
         showsHorizontalScrollIndicator={false}
       />
     </View>
-  );
+  ) : null;
 };
 
 export default BusinessList;
