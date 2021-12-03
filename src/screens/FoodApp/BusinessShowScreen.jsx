@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
-import { getBusinessById } from '../helpers';
+import { getBusinessById } from '../../helpers';
 
 const BusinessShowScreen = function ({ navigation }) {
   const [result, setResult] = useState(null);
@@ -14,7 +14,7 @@ const BusinessShowScreen = function ({ navigation }) {
   if (!result) return null;
   return (
     <View>
-      <Text>RSS{id}</Text>
+      <Text>{result.name}</Text>
       <FlatList
         data={result.photos}
         keyExtractor={(photo) => photo}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import useBusiness from '../utils/hooks/useBusiness';
-import BusinessList from '../components/BusinessList';
-import { filterByPrice } from '../helpers';
+import { Text, ScrollView } from 'react-native';
+import SearchBar from '../../components/SearchBar';
+import useBusiness from '../../utils/hooks/useBusiness';
+import BusinessList from '../../components/BusinessList';
+import { filterByPrice } from '../../helpers';
 
 const SearchScreen = function () {
   const [searchTerm, setSearchTerm] = useState('');
@@ -37,9 +37,3 @@ const SearchScreen = function () {
 };
 
 export default SearchScreen;
-
-const styles = StyleSheet.create({
-  parent: {
-    // flex: 1,
-  },
-});
