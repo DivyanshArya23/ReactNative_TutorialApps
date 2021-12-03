@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import BusinessDetail from './BusinessDetail';
 
 const BusinessList = function ({ title, list, navigation }) {
@@ -31,7 +32,7 @@ const BusinessList = function ({ title, list, navigation }) {
   ) : null;
 };
 
-export default BusinessList;
+export default withNavigation(BusinessList);
 
 const styles = StyleSheet.create({
   parent: {

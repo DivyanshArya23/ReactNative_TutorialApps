@@ -5,7 +5,7 @@ import useBusiness from '../utils/hooks/useBusiness';
 import BusinessList from '../components/BusinessList';
 import { filterByPrice } from '../helpers';
 
-const SearchScreen = function ({ navigation }) {
+const SearchScreen = function () {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchAPI, results, error] = useBusiness();
 
@@ -25,17 +25,11 @@ const SearchScreen = function ({ navigation }) {
         <BusinessList
           title="Cost Effective"
           list={filterByPrice(results, '$')}
-          navigation={navigation}
         />
-        <BusinessList
-          title="Bit Pricier"
-          list={filterByPrice(results, '$$')}
-          navigation={navigation}
-        />
+        <BusinessList title="Bit Pricier" list={filterByPrice(results, '$$')} />
         <BusinessList
           title="Big Spender"
           list={filterByPrice(results, undefined)}
-          navigation={navigation}
         />
       </ScrollView>
     </>
