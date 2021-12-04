@@ -1,4 +1,5 @@
 import createDataContext from './createDataContext';
+import uuid from '../methods/uuid';
 
 const ACTIONS = {
   ADD_BLOGPOST: 'add_blogpost',
@@ -8,9 +9,10 @@ const blogReducer = (state, action) => {
   let newBlog = {};
   // addBlogPost Data
   if (action.type === ACTIONS.ADD_BLOGPOST) {
+    const newBlogId = uuid();
     const newBlogNumber = state.length + 1;
     newBlog = {
-      id: newBlogNumber,
+      id: newBlogId,
       title: `Blog Post #${newBlogNumber}`,
       content: action?.payload || '',
     };
