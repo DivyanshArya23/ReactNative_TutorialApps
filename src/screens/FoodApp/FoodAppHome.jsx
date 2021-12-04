@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Text, ScrollView } from 'react-native';
-import SearchBar from '../../components/SearchBar';
+import SearchBar from '../../components/FoodApp/SearchBar';
 import useBusiness from '../../utils/hooks/useBusiness';
-import BusinessList from '../../components/BusinessList';
+import BusinessList from '../../components/FoodApp/BusinessList';
 import { filterByPrice } from '../../helpers';
 
 const FoodAppHome = function () {

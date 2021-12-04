@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import vars from '../assets/vars';
 
 const SearchBar = function ({
   value = '',
@@ -30,7 +29,7 @@ export default SearchBar;
 
 const styles = StyleSheet.create({
   backgroundStyle: {
-    backgroundColor: vars.grey,
+    backgroundColor: '#ddd',
     marginHorizontal: 20,
     marginVertical: 20,
     padding: 10,

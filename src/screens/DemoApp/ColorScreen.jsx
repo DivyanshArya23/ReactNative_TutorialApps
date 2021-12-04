@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import ColorBox from '../../components/DemoApp/ColorBox';
+import { getRandomColor } from '../../helpers';
 
 const ColorScreen = function () {
   const [boxArray, setBoxArray] = useState([]);
-
-  function getRandomColor() {
-    const red = Math.floor(Math.random() * 256);
-    const green = Math.floor(Math.random() * 256);
-    const blue = Math.floor(Math.random() * 256);
-    return `rgb(${red},${green},${blue})`;
-  }
 
   function addColor(color) {
     setBoxArray([...boxArray, color]);
