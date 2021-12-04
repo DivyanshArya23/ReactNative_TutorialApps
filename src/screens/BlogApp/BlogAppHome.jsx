@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
-import BlogContext from '../../utils/context/BlogContext';
+import { Context as BlogContext } from '../../utils/context/BlogContext';
 
 const BlogAppHome = function () {
-  const { data: blogPosts, addBlogPost } = useContext(BlogContext);
+  const { state: blogPosts, addBlogPost } = useContext(BlogContext);
   return (
     <View>
       <Text style={styles.title}>Blog Home</Text>

@@ -2,7 +2,7 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { screens, stackNavigatorRoutes } from './src/config/configurations';
-import { BlogProvider } from './src/utils/context/BlogContext';
+import { Provider as BlogProvider } from './src/utils/context/BlogContext';
 
 const navigator = createStackNavigator(stackNavigatorRoutes, {
   initialRouteName: 'BlogApp-Home', // screens[0].screenTitle,
