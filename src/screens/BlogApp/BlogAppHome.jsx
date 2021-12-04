@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import BlogContext from '../../utils/context/BlogContext';
 
 const BlogAppHome = function () {
-  const blogPosts = useContext(BlogContext);
+  const { data: blogPosts, addBlogPost } = useContext(BlogContext);
   return (
     <View>
-      <Text>Blog Home</Text>
+      <Text style={styles.title}>Blog Home</Text>
+      <Button
+        title="Add Blog"
+        onPress={() => {
+          addBlogPost();
+        }}
+      />
       <FlatList
         data={blogPosts}
         keyExtractor={(item) => item.id}
@@ -20,4 +26,6 @@ const BlogAppHome = function () {
 
 export default BlogAppHome;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: { fontSize: 20 },
+});
