@@ -5,7 +5,7 @@ import { screens, stackNavigatorRoutes } from './src/config/configurations';
 import { BlogProvider } from './src/utils/context/BlogContext';
 
 const navigator = createStackNavigator(stackNavigatorRoutes, {
-  initialRouteName: screens[0].screenTitle,
+  initialRouteName: 'BlogApp-Home', // screens[0].screenTitle,
   defaultNavigationOptions: {
     title: 'React Native Tutorial',
   },
