@@ -9,7 +9,7 @@ import DemoAppSquareScreen from '../screens/DemoApp/SquareScreen';
 import DemoAppSquareScreen2 from '../screens/DemoApp/SquareScreen2';
 import DemoAppTextScreen from '../screens/DemoApp/TextScreen';
 import DemoAppBoxScreen from '../screens/DemoApp/BoxScreen';
-import FoodAppHome from '../screens/FoodApp/SearchScreen';
+import FoodAppHome from '../screens/FoodApp/FoodAppHome';
 import FoodAppBusinessShowScreen from '../screens/FoodApp/BusinessShowScreen';
 
 export const screens = [

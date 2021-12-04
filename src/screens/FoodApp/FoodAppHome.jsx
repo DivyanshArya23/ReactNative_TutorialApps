@@ -5,7 +5,7 @@ import useBusiness from '../../utils/hooks/useBusiness';
 import BusinessList from '../../components/BusinessList';
 import { filterByPrice } from '../../helpers';
 
-const SearchScreen = function () {
+const FoodAppHome = function () {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchAPI, results, error] = useBusiness();
 
@@ -36,4 +36,4 @@ const SearchScreen = function () {
   );
 };
 
-export default SearchScreen;
+export default FoodAppHome;
