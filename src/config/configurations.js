@@ -11,6 +11,7 @@ import DemoAppTextScreen from '../screens/DemoApp/TextScreen';
 import DemoAppBoxScreen from '../screens/DemoApp/BoxScreen';
 import FoodAppHome from '../screens/FoodApp/FoodAppHome';
 import FoodAppBusinessShowScreen from '../screens/FoodApp/BusinessShowScreen';
+import BlogAppHome from '../screens/BlogApp/BlogAppHome';
 
 export const screens = [
   // App Home Screen must be at top
@@ -69,6 +70,11 @@ export const screens = [
   {
     screenTitle: 'FoodAppBusinessResult',
     component: FoodAppBusinessShowScreen,
+  },
+  //   BlogApp Screens
+  {
+    screenTitle: 'BlogApp-Home',
+    component: BlogAppHome,
   },
 ];
 
