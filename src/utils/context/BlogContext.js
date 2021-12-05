@@ -1,26 +1,15 @@
 import createDataContext from './createDataContext';
-import uuid from '../methods/uuid';
+import { blogAxios } from '../axios/blog';
+import apiEndpoints from '../../config/apiEndpoints';
 
 const ACTIONS = {
-  ADD_BLOGPOST: 'add_blogpost',
   DELETE_BLOGPOST: 'delete_blogpost',
   EDIT_BLOGPOST: 'edit_blogpost',
+  GET_BLOGPOSTS: 'get_blogposts',
 };
 
 const blogReducer = (state, action) => {
-  let newBlog = {};
-  // addBlogPost Data
-  if (action.type === ACTIONS.ADD_BLOGPOST) {
-    const newBlogId = uuid();
-    newBlog = {
-      id: newBlogId,
-      title: action?.payload?.title,
-      content: action?.payload?.content || '',
-    };
-  }
   switch (action.type) {
-    case ACTIONS.ADD_BLOGPOST:
-      return [...state, newBlog];
     case ACTIONS.DELETE_BLOGPOST:
       return state.filter((blog) => blog.id !== action.payload);
     case ACTIONS.EDIT_BLOGPOST:
@@ -30,37 +19,55 @@ const blogReducer = (state, action) => {
         }
         return blog;
       });
+    case ACTIONS.GET_BLOGPOSTS:
+      return action.payload;
+
     default:
       return state;
   }
 };
 
-const addBlogPost = (dispatch) => {
-  return (
+const addBlogPost = () => {
+  return async (
     title = 'Unnamed Blog Post',
     content = 'Dummy Blog Content',
     callback = () => {}
   ) => {
-    dispatch({ type: ACTIONS.ADD_BLOGPOST, payload: { title, content } });
+    await blogAxios.post(apiEndpoints.blogPosts, {
+      title,
+      content,
+    });
     callback();
   };
 };
 
 const deleteBlogPost = (dispatch) => {
-  return (id) => {
+  return async (id) => {
+    await blogAxios.delete(`${apiEndpoints.blogPosts}/${id}`);
     dispatch({ type: ACTIONS.DELETE_BLOGPOST, payload: id });
   };
 };
 
-const editBlogPost = (dispatch) => {
-  return (blog, callback = () => {}) => {
-    dispatch({ type: ACTIONS.EDIT_BLOGPOST, payload: blog });
+const editBlogPost = () => {
+  return async (blog, callback = () => {}) => {
+    await blogAxios.put(`${apiEndpoints.blogPosts}/${blog.id}`, blog);
     callback();
+  };
+};
+
+const getBlogPosts = (dispatch) => {
+  return async () => {
+    try {
+      const response = await blogAxios.get(apiEndpoints.blogPosts);
+      dispatch({ type: ACTIONS.GET_BLOGPOSTS, payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
   };
 };
 
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost, deleteBlogPost, editBlogPost },
+  { addBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
   []
 );

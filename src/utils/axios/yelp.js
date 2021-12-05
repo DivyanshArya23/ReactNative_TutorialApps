@@ -8,5 +8,5 @@ const axiosInstance = axios.create({
     Authorization: `Bearer ${YELP_ENV.API_KEY}`,
   },
 });
-
+export { axiosInstance as yelpAxios };
 export default axiosInstance;
