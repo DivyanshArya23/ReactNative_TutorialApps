@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { withNavigation } from 'react-navigation';
 import { Context as blogContext } from '../../utils/context/BlogContext';
 
 const CreateBlog = function ({ navigation }) {
@@ -39,7 +38,7 @@ const CreateBlog = function ({ navigation }) {
   );
 };
 
-export default withNavigation(CreateBlog);
+export default CreateBlog;
 
 const styles = StyleSheet.create({
   heading: {

@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { withNavigation } from 'react-navigation';
 import { Context as BlogContext } from '../../utils/context/BlogContext';
 import ActionBtn from '../../components/BlogApp/ActionBtn';
 
@@ -62,10 +61,10 @@ BlogAppHome.navigationOptions = ({ navigation }) => {
   };
 };
 
-export default withNavigation(BlogAppHome);
+export default BlogAppHome;
 
 const styles = StyleSheet.create({
-  title: { fontSize: 20 },
+  title: { fontSize: 40, fontWeight: 'bold', textAlign: 'center' },
   blogBtnParent: {
     marginHorizontal: 5,
     marginVertical: 10,
