@@ -11,11 +11,10 @@ const blogReducer = (state, action) => {
   // addBlogPost Data
   if (action.type === ACTIONS.ADD_BLOGPOST) {
     const newBlogId = uuid();
-    const newBlogNumber = state.length + 1;
     newBlog = {
       id: newBlogId,
-      title: `Blog Post #${newBlogNumber}`,
-      content: action?.payload || '',
+      title: action?.payload?.title,
+      content: action?.payload?.content || '',
     };
   }
   switch (action.type) {
@@ -29,8 +28,13 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = (dispatch) => {
-  return (content = 'Dummy Blog Content') => {
-    dispatch({ type: ACTIONS.ADD_BLOGPOST, payload: content });
+  return (
+    title = 'Unnamed Blog Post',
+    content = 'Dummy Blog Content',
+    callback = () => {}
+  ) => {
+    dispatch({ type: ACTIONS.ADD_BLOGPOST, payload: { title, content } });
+    callback();
   };
 };
 

@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import { Context as blogContext } from '../../utils/context/BlogContext';
 
-const CreateBlog = function () {
-  const { state } = useContext(blogContext);
+const CreateBlog = function ({ navigation }) {
+  const { addBlogPost } = useContext(blogContext);
   const [formData, setFormData] = useState({ title: '', content: '' });
 
   return (
@@ -25,12 +26,20 @@ const CreateBlog = function () {
         }}
         style={{ ...styles.input, ...styles.content }}
       />
-      <Button style={styles.submitBtn} title="Add Blog Post" />
+      <Button
+        title="Add Blog Post"
+        onPress={() => {
+          addBlogPost(formData.title, formData.content, () => {
+            navigation.navigate('BlogApp-Home');
+          });
+        }}
+        style={styles.submitBtn}
+      />
     </View>
   );
 };
 
-export default CreateBlog;
+export default withNavigation(CreateBlog);
 
 const styles = StyleSheet.create({
   heading: {
