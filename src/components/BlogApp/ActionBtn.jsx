@@ -1,21 +1,28 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
 
-const ActionBtn = function ({ title, actionFunc }) {
+const ActionBtn = function ({ title, actionFunc, navigation, id }) {
   return (
-    <View style={styles.parent}>
-      <Text style={styles.title}>{title}</Text>
-      <View style={styles.icon}>
-        <TouchableOpacity onPress={actionFunc}>
-          <AntDesign name="delete" size={24} color="black" />
-        </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('BlogApp-ShowBlogScreen', { id });
+      }}
+    >
+      <View style={styles.parent}>
+        <Text style={styles.title}>{title}</Text>
+        <View style={styles.icon}>
+          <TouchableOpacity onPress={actionFunc}>
+            <AntDesign name="delete" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-export default ActionBtn;
+export default withNavigation(ActionBtn);
 
 const styles = StyleSheet.create({
   title: {

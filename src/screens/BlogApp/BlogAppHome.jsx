@@ -25,7 +25,8 @@ const BlogAppHome = function () {
           renderItem={({ item }) => {
             return (
               <ActionBtn
-                title={item.title}
+                title={item.title || ''}
+                id={item.id || ''}
                 actionFunc={() => {
                   deleteBlogPost(item.id);
                 }}
