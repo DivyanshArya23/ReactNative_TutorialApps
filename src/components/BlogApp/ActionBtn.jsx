@@ -1,13 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const ActionBtn = function ({ title }) {
+const ActionBtn = function ({ title, actionFunc }) {
   return (
     <View style={styles.parent}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.icon}>
-        <AntDesign name="delete" size={24} color="black" />
+        <TouchableOpacity onPress={actionFunc}>
+          <AntDesign name="delete" size={24} color="black" />
+        </TouchableOpacity>
       </View>
     </View>
   );

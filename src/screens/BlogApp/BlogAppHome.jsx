@@ -4,7 +4,11 @@ import { Context as BlogContext } from '../../utils/context/BlogContext';
 import ActionBtn from '../../components/BlogApp/ActionBtn';
 
 const BlogAppHome = function () {
-  const { state: blogPosts, addBlogPost } = useContext(BlogContext);
+  const {
+    state: blogPosts,
+    addBlogPost,
+    deleteBlogPost,
+  } = useContext(BlogContext);
   return (
     <View>
       <Text style={styles.title}>Blog Home</Text>
@@ -19,7 +23,14 @@ const BlogAppHome = function () {
           data={blogPosts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
-            return <ActionBtn title={item.title} />;
+            return (
+              <ActionBtn
+                title={item.title}
+                actionFunc={() => {
+                  deleteBlogPost(item.id);
+                }}
+              />
+            );
           }}
         />
       </View>
