@@ -1,5 +1,14 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { withNavigation } from 'react-navigation';
 import { Context as BlogContext } from '../../utils/context/BlogContext';
 import ActionBtn from '../../components/BlogApp/ActionBtn';
 
@@ -39,7 +48,21 @@ const BlogAppHome = function () {
   );
 };
 
-export default BlogAppHome;
+BlogAppHome.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('BlogApp-CreateBlogScreen');
+        }}
+      >
+        <Feather name="plus" size={30} />
+      </TouchableOpacity>
+    ),
+  };
+};
+
+export default withNavigation(BlogAppHome);
 
 const styles = StyleSheet.create({
   title: { fontSize: 20 },
