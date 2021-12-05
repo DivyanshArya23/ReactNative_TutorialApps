@@ -4,7 +4,7 @@ import {
   Text,
   View,
   FlatList,
-  //   Button,
+  Button,
   TouchableOpacity,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
@@ -14,18 +14,18 @@ import ActionBtn from '../../components/BlogApp/ActionBtn';
 const BlogAppHome = function () {
   const {
     state: blogPosts,
-    // addBlogPost,
+    addBlogPost,
     deleteBlogPost,
   } = useContext(BlogContext);
   return (
     <View>
       <Text style={styles.title}>Blog Home</Text>
-      {/* <Button
+      <Button
         title="Add Blog"
         onPress={() => {
           addBlogPost();
         }}
-      /> */}
+      />
       <View style={styles.blogBtnParent}>
         <FlatList
           data={blogPosts}

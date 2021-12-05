@@ -4,6 +4,7 @@ import uuid from '../methods/uuid';
 const ACTIONS = {
   ADD_BLOGPOST: 'add_blogpost',
   DELETE_BLOGPOST: 'delete_blogpost',
+  EDIT_BLOGPOST: 'edit_blogpost',
 };
 
 const blogReducer = (state, action) => {
@@ -22,6 +23,13 @@ const blogReducer = (state, action) => {
       return [...state, newBlog];
     case ACTIONS.DELETE_BLOGPOST:
       return state.filter((blog) => blog.id !== action.payload);
+    case ACTIONS.EDIT_BLOGPOST:
+      return state.map((blog) => {
+        if (blog.id === action.payload.id) {
+          return action.payload;
+        }
+        return blog;
+      });
     default:
       return state;
   }
@@ -44,8 +52,15 @@ const deleteBlogPost = (dispatch) => {
   };
 };
 
+const editBlogPost = (dispatch) => {
+  return (blog, callback = () => {}) => {
+    dispatch({ type: ACTIONS.EDIT_BLOGPOST, payload: blog });
+    callback();
+  };
+};
+
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost, deleteBlogPost },
+  { addBlogPost, deleteBlogPost, editBlogPost },
   []
 );
