@@ -11,6 +11,8 @@ const EditBlogScreen = function ({ navigation }) {
 
   return (
     <BlogForm
+      heading="Edit Blog"
+      label={{ title: ' Edit Title :', content: 'Edit Content :' }}
       initialValue={blogPost}
       onSubmit={(updatedBlog) => {
         editBlogPost(updatedBlog, () => {

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-const BlogForm = function ({ initialValue, onSubmit }) {
+const BlogForm = function ({ heading, label, initialValue, onSubmit }) {
   const [formData, setFormData] = useState(initialValue);
 
   return (
     <View>
-      <Text style={styles.heading}>Create Blog</Text>
-      <Text style={styles.label}>Enter Title :</Text>
+      <Text style={styles.heading}>{heading}</Text>
+      <Text style={styles.label}>{label.title}</Text>
       <TextInput
         value={formData.title}
         onChangeText={(text) => {
@@ -15,7 +15,7 @@ const BlogForm = function ({ initialValue, onSubmit }) {
         }}
         style={{ ...styles.input }}
       />
-      <Text style={styles.label}>Enter Content :</Text>
+      <Text style={styles.label}>{label.content}</Text>
       <TextInput
         value={formData.content}
         onChangeText={(content) => {
@@ -35,6 +35,11 @@ const BlogForm = function ({ initialValue, onSubmit }) {
 };
 
 BlogForm.defaultProps = {
+  heading: 'Create Blog',
+  label: {
+    title: 'Enter Title :',
+    content: 'Enter Content :',
+  },
   initialValue: { title: '', content: '' },
   onSubmit: () => {},
 };
