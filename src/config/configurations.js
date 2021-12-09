@@ -127,7 +127,7 @@ export const screens = [
 
 export const allStackNavigatorRoutes = createNavigationRoutes(screens);
 
-const trackAppLoginScreens = ['TrackAppSignin', 'TrackAppSignup'];
+const trackAppLoginScreens = ['TrackAppSignup', 'TrackAppSignin'];
 export const trackAppLoginFlowRoutes = createNavigationRoutes(
   screens,
   trackAppLoginScreens
