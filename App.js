@@ -10,6 +10,7 @@ import {
   trackAppListRoutes,
 } from './src/config/configurations';
 import { Provider as BlogProvider } from './src/utils/context/BlogContext';
+import { Provider as AuthProvider } from './src/utils/context/AuthContext';
 
 const switchNavigator = createStackNavigator(
   {
@@ -41,8 +42,10 @@ const App = createAppContainer(switchNavigator);
 // eslint-disable-next-line react/function-component-definition
 export default function () {
   return (
-    <BlogProvider>
-      <App />
-    </BlogProvider>
+    <AuthProvider>
+      <BlogProvider>
+        <App />
+      </BlogProvider>
+    </AuthProvider>
   );
 }

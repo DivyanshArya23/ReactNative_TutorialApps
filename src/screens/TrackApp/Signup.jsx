@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text, Input, Button } from 'react-native-elements';
 import Spacer from '../../components/Spacer';
+import { Context as AuthContext } from '../../utils/context/AuthContext';
 
 const Signup = function () {
+  const { state, signup } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   return (
     <View style={styles.parent}>
@@ -32,8 +34,16 @@ const Signup = function () {
           setFormValues({ ...formValues, password: newPass });
         }}
       />
+      {state.errorMessage ? (
+        <Text style={styles.error}>{state.errorMessage}</Text>
+      ) : null}
       <Spacer>
-        <Button title="Sign Up" />
+        <Button
+          title="Sign Up"
+          onPress={() => {
+            signup(formValues);
+          }}
+        />
       </Spacer>
     </View>
   );
@@ -54,5 +64,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginBottom: 100,
+  },
+  error: {
+    color: 'red',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
