@@ -15,6 +15,13 @@ import BlogAppHome from '../screens/BlogApp/BlogAppHome';
 import ShowBlogScreen from '../screens/BlogApp/ShowBlogScreen';
 import CreateBlogScreen from '../screens/BlogApp/CreateBlog';
 import EditBlogScreen from '../screens/BlogApp/EditBlogScreen';
+import TrackAppAccounts from '../screens/TrackApp/Accounts';
+import TrackAppSignin from '../screens/TrackApp/Signin';
+import TrackAppSignup from '../screens/TrackApp/Signup';
+import TrackAppTrackCreate from '../screens/TrackApp/TrackCreate';
+import TrackAppTrackDetail from '../screens/TrackApp/TrackDetail';
+import TrackAppTrackList from '../screens/TrackApp/TrackList';
+import createNavigationRoutes from '../utils/methods/createNavigationRoutes';
 
 export const screens = [
   // App Home Screen must be at top
@@ -91,8 +98,48 @@ export const screens = [
     screenTitle: 'BlogApp-EditBlog',
     component: EditBlogScreen,
   },
+  //   TrackApp Screens
+  {
+    screenTitle: 'TrackAppAccounts',
+    component: TrackAppAccounts,
+  },
+  {
+    screenTitle: 'TrackAppSignin',
+    component: TrackAppSignin,
+  },
+  {
+    screenTitle: 'TrackAppSignup',
+    component: TrackAppSignup,
+  },
+  {
+    screenTitle: 'TrackAppTrackCreate',
+    component: TrackAppTrackCreate,
+  },
+  {
+    screenTitle: 'TrackAppTrackDetail',
+    component: TrackAppTrackDetail,
+  },
+  {
+    screenTitle: 'TrackAppTrackList',
+    component: TrackAppTrackList,
+  },
 ];
 
-export const stackNavigatorRoutes = screens.reduce((prev, curr) => {
-  return { ...prev, [curr.screenTitle]: curr.component };
-}, {});
+export const allStackNavigatorRoutes = createNavigationRoutes(screens);
+
+const trackAppLoginScreens = ['TrackAppSignin', 'TrackAppSignup'];
+export const trackAppLoginFlowRoutes = createNavigationRoutes(
+  screens,
+  trackAppLoginScreens
+);
+
+const trackAppMainFlowScreens = ['TrackAppAccounts', 'TrackAppTrackCreate'];
+export const trackAppMainFlowRoutes = createNavigationRoutes(
+  screens,
+  trackAppMainFlowScreens
+);
+const trackAppListScreens = ['TrackAppTrackList', 'TrackAppTrackDetail'];
+export const trackAppListRoutes = createNavigationRoutes(
+  screens,
+  trackAppListScreens
+);
