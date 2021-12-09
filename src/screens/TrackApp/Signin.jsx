@@ -1,10 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text, Button } from 'react-native-elements';
 
 const Signin = function ({ navigation }) {
   return (
     <View>
-      <Text style={styles.title}>Signin</Text>
+      <Text h3 style={styles.title}>
+        Signin
+      </Text>
       <Button
         title="Go to SignUp"
         onPress={() => {

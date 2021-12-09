@@ -11,7 +11,7 @@ import {
 } from './src/config/configurations';
 import { Provider as BlogProvider } from './src/utils/context/BlogContext';
 
-const switchNavigator = createSwitchNavigator(
+const switchNavigator = createStackNavigator(
   {
     trackApp: createSwitchNavigator({
       trackAppLoginFlow: createStackNavigator(trackAppLoginFlowRoutes),
