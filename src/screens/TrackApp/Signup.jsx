@@ -5,7 +5,7 @@ import Spacer from '../../components/Spacer';
 
 const Signup = function () {
   return (
-    <View>
+    <View style={styles.parent}>
       <Spacer>
         <Text h3 style={styles.title}>
           Signup for Tracker
@@ -21,10 +21,20 @@ const Signup = function () {
   );
 };
 
+Signup.navigationOptions = () => {
+  return {
+    headerShown: false,
+  };
+};
 export default Signup;
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 48,
+    // fontSize: 48,
+  },
+  parent: {
+    flex: 1,
+    justifyContent: 'center',
+    marginBottom: 100,
   },
 });
