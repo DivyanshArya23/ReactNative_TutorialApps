@@ -11,8 +11,9 @@ import {
 } from './src/config/configurations';
 import { Provider as BlogProvider } from './src/utils/context/BlogContext';
 import { Provider as AuthProvider } from './src/utils/context/AuthContext';
+import { setNavigator } from './src/utils/methods/navigationRef';
 
-const switchNavigator = createStackNavigator(
+const switchNavigator = createSwitchNavigator(
   {
     trackApp: createSwitchNavigator({
       trackAppLoginFlow: createStackNavigator(trackAppLoginFlowRoutes),
@@ -44,7 +45,11 @@ export default function () {
   return (
     <AuthProvider>
       <BlogProvider>
-        <App />
+        <App
+          ref={(navigator) => {
+            setNavigator(navigator);
+          }}
+        />
       </BlogProvider>
     </AuthProvider>
   );

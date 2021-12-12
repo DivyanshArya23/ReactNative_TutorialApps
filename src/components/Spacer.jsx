@@ -1,5 +1,5 @@
-import React, { Children } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 const Spacer = function ({ children }) {
   return <View style={styles.parent}>{children}</View>;

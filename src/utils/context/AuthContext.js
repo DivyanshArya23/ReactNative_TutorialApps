@@ -1,25 +1,35 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { trackAxios } from '../axios/track';
+import { navigate } from '../methods/navigationRef';
 import createDataContext from './createDataContext';
 
 const AUTH_ACTIONS = {
   ADD_ERROR: 'add_error',
+  SIGNUP: 'signup',
 };
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case AUTH_ACTIONS.ADD_ERROR:
       return { ...state, errorMessage: action.payload };
+
+    case AUTH_ACTIONS.SIGNUP:
+      return { errorMessage: '', token: action.payload };
     default:
       return state;
   }
 };
 
-const signup = (dispatch) => {
-  return async ({ email, password }) => {
+const signup =
+  (dispatch) =>
+  async ({ email, password }) => {
     // make api request for signin
     try {
       const response = await trackAxios.post('/signup', { email, password });
       const { token } = response.data;
+      await AsyncStorage.setItem('token', token);
+      dispatch({ type: AUTH_ACTIONS.SIGNUP, payload: token });
+      navigate('trackListFlow');
     } catch (error) {
       dispatch({
         type: AUTH_ACTIONS.ADD_ERROR,
@@ -29,7 +39,7 @@ const signup = (dispatch) => {
     // if success, change to authenticated
     // if fail, show error
   };
-};
+
 const signin = (dispatch) => {
   return ({ email, password }) => {
     // make api request for signin
@@ -46,5 +56,5 @@ const signout = (dispatch) => {
 export const { Context, Provider } = createDataContext(
   authReducer,
   { signup, signin, signout },
-  { isSignedIn: false, errorMessage: '' }
+  { token: null, errorMessage: '' }
 );
