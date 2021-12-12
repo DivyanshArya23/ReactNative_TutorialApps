@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Text, Button } from 'react-native-elements';
+import AuthForm from '../../components/TrackApp/AuthForm';
+import { Context as AuthContext } from '../../utils/context/AuthContext';
 
-const Signin = function ({ navigation }) {
+const Signin = function () {
+  const { state, signin } = useContext(AuthContext);
   return (
-    <View>
-      <Text h3 style={styles.title}>
-        Signin
-      </Text>
-      <Button
-        title="Go to SignUp"
-        onPress={() => {
-          navigation.navigate('TrackAppSignup');
-        }}
-      />
-      <Button
-        title="Go to Main Flow"
-        onPress={() => {
-          navigation.navigate('trackAppMainFlow');
-        }}
+    <View style={styles.parent}>
+      <AuthForm
+        authType="Signin"
+        onSubmit={signin}
+        error={state.errorMessage}
       />
     </View>
   );
 };
 
+Signin.navigationOptions = () => {
+  return {
+    headerShown: false,
+  };
+};
+
 export default Signin;
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 48,
+  parent: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });

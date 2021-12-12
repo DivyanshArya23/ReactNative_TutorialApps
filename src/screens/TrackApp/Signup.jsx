@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import AuthForm from '../../components/TrackApp/AuthForm';
 import { Context as AuthContext } from '../../utils/context/AuthContext';
 
@@ -10,7 +9,7 @@ const Signup = function () {
   return (
     <View style={styles.parent}>
       <AuthForm
-        authType="Sign up"
+        authType="Signup"
         onSubmit={signup}
         error={state.errorMessage}
       />

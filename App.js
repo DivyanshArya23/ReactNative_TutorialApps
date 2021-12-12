@@ -13,7 +13,7 @@ import { Provider as BlogProvider } from './src/utils/context/BlogContext';
 import { Provider as AuthProvider } from './src/utils/context/AuthContext';
 import { setNavigator } from './src/utils/methods/navigationRef';
 
-const switchNavigator = createSwitchNavigator(
+const switchNavigator = createStackNavigator(
   {
     trackApp: createSwitchNavigator({
       trackAppLoginFlow: createStackNavigator(trackAppLoginFlowRoutes),

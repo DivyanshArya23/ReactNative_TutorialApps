@@ -5,15 +5,15 @@ import Spacer from '../Spacer';
 import NavLink from './TextLink';
 
 const Data = {
-  'Sign in': {
+  Signin: {
     heading: 'Signin for Tracker App',
     linkText: "Don't have an account ? Sing up here",
     routeToRedirect: 'TrackAppSignup',
     submitBtnText: 'Sign In',
   },
-  'Sign up': {
+  Signup: {
     heading: 'Signup for Tracker App',
-    text: ' Already have an account ? Sing in Instead',
+    linkText: ' Already have an account ? Sing in Instead',
     routeToRedirect: 'TrackAppSignin',
     submitBtnText: 'Sign Up',
   },
@@ -57,7 +57,6 @@ const AuthForm = function ({ authType = '', onSubmit = () => {}, error = '' }) {
           }}
         />
       </Spacer>
-      {/* eslint-disable react/jsx-props-no-spreading */}
       <NavLink
         text={Data[authType].linkText}
         routeToRedirect={Data[authType].routeToRedirect}
