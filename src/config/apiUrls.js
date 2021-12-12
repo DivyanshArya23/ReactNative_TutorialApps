@@ -3,7 +3,7 @@ const API_URLS = {
     url: `https://api.yelp.com/v3/businesses`,
   },
   trackApp: {
-    url: `http://9ddf-122-161-73-42.ngrok.io`,
+    url: `http://a14f-122-161-73-42.ngrok.io`,
   },
 };
 

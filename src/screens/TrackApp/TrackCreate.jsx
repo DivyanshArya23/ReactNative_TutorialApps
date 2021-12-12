@@ -1,18 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Text } from 'react-native-elements';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Map from '../../components/TrackApp/Map';
 
 const TrackCreate = function () {
   return (
-    <View>
-      <Text style={styles.title}>TrackCreate</Text>
-    </View>
+    <SafeAreaView>
+      <Text h2>TrackCreate</Text>
+      <Map />
+    </SafeAreaView>
   );
 };
 
 export default TrackCreate;
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 48,
-  },
-});
+const styles = StyleSheet.create({});
