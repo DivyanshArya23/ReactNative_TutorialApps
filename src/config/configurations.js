@@ -127,13 +127,13 @@ export const screens = [
 
 export const allStackNavigatorRoutes = createNavigationRoutes(screens);
 
-const trackAppLoginScreens = ['TrackAppSignup', 'TrackAppSignin'];
+const trackAppLoginScreens = ['TrackAppSignin', 'TrackAppSignup'];
 export const trackAppLoginFlowRoutes = createNavigationRoutes(
   screens,
   trackAppLoginScreens
 );
 
-const trackAppMainFlowScreens = ['TrackAppAccounts', 'TrackAppTrackCreate'];
+const trackAppMainFlowScreens = ['TrackAppTrackCreate', 'TrackAppAccounts'];
 export const trackAppMainFlowRoutes = createNavigationRoutes(
   screens,
   trackAppMainFlowScreens

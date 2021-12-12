@@ -8,8 +8,10 @@ const AUTH_ACTIONS = {
   SIGNUP: 'signup',
   SIGNIN: 'signin',
   CLEAR_ERROR: 'clear_error_message',
+  SIGNOUT: 'signout',
 };
 
+const initialState = { token: null, errorMessage: '' };
 const authReducer = (state, action) => {
   switch (action.type) {
     case AUTH_ACTIONS.ADD_ERROR:
@@ -18,10 +20,22 @@ const authReducer = (state, action) => {
     case AUTH_ACTIONS.SIGNUP:
     case AUTH_ACTIONS.SIGNIN:
       return { errorMessage: '', token: action.payload };
+    case AUTH_ACTIONS.SIGNOUT:
+      return initialState;
     case AUTH_ACTIONS.CLEAR_ERROR:
       return { ...state, errorMessage: '' };
     default:
       return state;
+  }
+};
+
+const autoSignin = (dispatch) => async () => {
+  const token = await AsyncStorage.getItem('token');
+  if (token) {
+    dispatch({ type: AUTH_ACTIONS.SIGNIN, payload: token });
+    navigate('trackListFlow');
+  } else {
+    navigate('TrackAppSignin');
   }
 };
 
@@ -69,14 +83,13 @@ const signin =
     }
   };
 
-const signout = (dispatch) => {
-  return () => {
-    // signout, change state to de-authenticated
-  };
+const signout = (dispatch) => async () => {
+  await AsyncStorage.removeItem('token');
+  dispatch({ type: AUTH_ACTIONS.SIGNOUT });
+  navigate('TrackAppSignin');
 };
-
 export const { Context, Provider } = createDataContext(
   authReducer,
-  { signup, signin, signout, clearErrorMessage },
-  { token: null, errorMessage: '' }
+  { signup, signin, signout, clearErrorMessage, autoSignin },
+  initialState
 );

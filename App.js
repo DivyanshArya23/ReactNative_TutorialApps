@@ -13,7 +13,7 @@ import { Provider as BlogProvider } from './src/utils/context/BlogContext';
 import { Provider as AuthProvider } from './src/utils/context/AuthContext';
 import { setNavigator } from './src/utils/methods/navigationRef';
 
-const switchNavigator = createStackNavigator(
+const switchNavigator = createSwitchNavigator(
   {
     trackApp: createSwitchNavigator({
       trackAppLoginFlow: createStackNavigator(trackAppLoginFlowRoutes),
@@ -25,7 +25,7 @@ const switchNavigator = createStackNavigator(
     ...allStackNavigatorRoutes,
   },
   {
-    initialRouteName: 'TrackAppSignin', // screens[0].screenTitle,
+    // initialRouteName: 'TrackAppSignin', // screens[0].screenTitle,
     defaultNavigationOptions: {
       title: 'React Native Tutorial',
     },

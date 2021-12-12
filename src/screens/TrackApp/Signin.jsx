@@ -1,11 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import AuthForm from '../../components/TrackApp/AuthForm';
 import { Context as AuthContext } from '../../utils/context/AuthContext';
 
 const Signin = function () {
-  const { state, signin, clearErrorMessage } = useContext(AuthContext);
+  const { state, signin, clearErrorMessage, autoSignin } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    autoSignin();
+  }, []);
+
   return (
     <View style={styles.parent}>
       <NavigationEvents
