@@ -25,7 +25,7 @@ const switchNavigator = createStackNavigator(
     ...allStackNavigatorRoutes,
   },
   {
-    initialRouteName: 'TrackAppSignup', // screens[0].screenTitle,
+    initialRouteName: 'TrackAppSignin', // screens[0].screenTitle,
     defaultNavigationOptions: {
       title: 'React Native Tutorial',
     },
