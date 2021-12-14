@@ -8,8 +8,8 @@ const Map = function () {
       <Text>Map</Text>
       <MapView
         initialRegion={{
-          latitude: 37.33233,
-          longitude: -122.03121,
+          latitude: 28.95779925200964,
+          longitude: 77.74646883189935,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
