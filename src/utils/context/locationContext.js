@@ -11,7 +11,7 @@ const iniitalState = {
   recording: false,
   locations: [],
   currentLocation: null,
-  name: null,
+  name: '',
 };
 
 const locationReducer = (state, action) => {
