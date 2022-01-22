@@ -12,7 +12,8 @@ export default (shouldTrack, callback) => {
     let subscriber = null;
     const startWatching = async () => {
       try {
-        const { granted } = await requestForegroundPermissionsAsync();
+        const granted = true;
+        // const { granted } = await requestForegroundPermissionsAsync();
         if (!granted) throw new Error('Location Permission not granted');
         subscriber = await watchPositionAsync(
           {
