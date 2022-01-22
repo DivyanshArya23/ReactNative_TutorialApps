@@ -10,8 +10,10 @@ import useLocation from '../../utils/hooks/useLocation';
 import TrackForm from '../../components/TrackApp/TrackForm';
 
 const TrackCreate = function ({ isFocused }) {
-  const { addLocation } = useContext(LocationContext);
-  const [err] = useLocation(isFocused, addLocation);
+  const { state, addLocation } = useContext(LocationContext);
+  const [err] = useLocation(isFocused, (location) => {
+    addLocation(location, state.recording);
+  });
 
   return (
     <SafeAreaView>
