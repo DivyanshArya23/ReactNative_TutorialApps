@@ -15,6 +15,12 @@ const TrackList = function ({ navigation }) {
   );
 };
 
+// TrackList.navigationOptions = () => {
+//   return {
+//     headerShown: false,
+//   };
+// };
+
 export default TrackList;
 
 const styles = StyleSheet.create({

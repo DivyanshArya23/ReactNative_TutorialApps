@@ -7,6 +7,7 @@ import Map from '../../components/TrackApp/Map';
 import '../../utils/methods/_mockLocation';
 import { Context as LocationContext } from '../../utils/context/locationContext';
 import useLocation from '../../utils/hooks/useLocation';
+import TrackForm from '../../components/TrackApp/TrackForm';
 
 const TrackCreate = function ({ isFocused }) {
   const { addLocation } = useContext(LocationContext);
@@ -17,6 +18,7 @@ const TrackCreate = function ({ isFocused }) {
       <Text h2>TrackCreate</Text>
       <Map />
       {err ? <Text>Please enable location services</Text> : null}
+      <TrackForm />
     </SafeAreaView>
   );
 };
