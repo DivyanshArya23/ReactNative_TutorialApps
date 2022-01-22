@@ -1,3 +1,4 @@
+import { trackAxios } from '../axios/track';
 import createDataContext from './createDataContext';
 
 const ACTIONS = {};
@@ -12,8 +13,8 @@ const trackReducer = (state, action) => {
 };
 
 const fetchTracks = (dispatch) => () => {};
-const createTrack = (dispatch) => (name, locations) => {
-  console.log(name, locations.length);
+const createTrack = (dispatch) => async (name, locations) => {
+  await trackAxios.post('/tracks', { name, locations });
 };
 
 export const { Context, Provider } = createDataContext(
