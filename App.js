@@ -12,6 +12,7 @@ import {
 import { Provider as BlogProvider } from './src/utils/context/BlogContext';
 import { Provider as AuthProvider } from './src/utils/context/AuthContext';
 import { Provider as LocationProvider } from './src/utils/context/locationContext';
+import { Provider as TrackProvider } from './src/utils/context/TrackContext';
 import { setNavigator } from './src/utils/methods/navigationRef';
 
 const switchNavigator = createSwitchNavigator(
@@ -44,16 +45,18 @@ const App = createAppContainer(switchNavigator);
 // eslint-disable-next-line react/function-component-definition
 export default function () {
   return (
-    <LocationProvider>
-      <AuthProvider>
-        <BlogProvider>
-          <App
-            ref={(navigator) => {
-              setNavigator(navigator);
-            }}
-          />
-        </BlogProvider>
-      </AuthProvider>
-    </LocationProvider>
+    <TrackProvider>
+      <LocationProvider>
+        <AuthProvider>
+          <BlogProvider>
+            <App
+              ref={(navigator) => {
+                setNavigator(navigator);
+              }}
+            />
+          </BlogProvider>
+        </AuthProvider>
+      </LocationProvider>
+    </TrackProvider>
   );
 }

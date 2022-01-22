@@ -47,7 +47,7 @@ export default Map;
 
 const styles = StyleSheet.create({
   map: {
-    height: 300,
+    height: 250,
     //  width: 200
   },
 });
