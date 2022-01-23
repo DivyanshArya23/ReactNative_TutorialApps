@@ -17,7 +17,6 @@ const TrackList = function ({ navigation }) {
   return (
     <View>
       <NavigationEvents onWillFocus={fetchTracks} />
-      <Text style={styles.title}>TrackList</Text>
       <FlatList
         data={state}
         keyExtractor={(item) => item._id}
@@ -42,11 +41,11 @@ const TrackList = function ({ navigation }) {
   );
 };
 
-// TrackList.navigationOptions = () => {
-//   return {
-//     headerShown: false,
-//   };
-// };
+TrackList.navigationOptions = () => {
+  return {
+    title: 'Tracks',
+  };
+};
 
 export default TrackList;
 

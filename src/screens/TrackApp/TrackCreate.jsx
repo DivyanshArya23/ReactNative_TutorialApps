@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { withNavigationFocus } from 'react-navigation';
+import { Feather } from '@expo/vector-icons';
 import Map from '../../components/TrackApp/Map';
 import '../../utils/methods/_mockLocation';
 import { Context as LocationContext } from '../../utils/context/locationContext';
@@ -31,6 +32,11 @@ const TrackCreate = function ({ isFocused }) {
       <TrackForm />
     </SafeAreaView>
   );
+};
+
+TrackCreate.navigationOptions = {
+  title: 'Add Track',
+  tabBarIcon: <Feather name="plus-circle" size={24} color="black" />,
 };
 
 export default withNavigationFocus(TrackCreate);

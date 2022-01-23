@@ -2,6 +2,7 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Ionicons } from '@expo/vector-icons';
 import {
   screens,
   allStackNavigatorRoutes,
@@ -15,12 +16,18 @@ import { Provider as LocationProvider } from './src/utils/context/locationContex
 import { Provider as TrackProvider } from './src/utils/context/TrackContext';
 import { setNavigator } from './src/utils/methods/navigationRef';
 
+const trackListFlow = createStackNavigator(trackAppListRoutes);
+trackListFlow.navigationOptions = {
+  title: 'Tracks',
+  tabBarIcon: <Ionicons name="list" size={24} color="black" />,
+};
+
 const switchNavigator = createSwitchNavigator(
   {
     trackApp: createSwitchNavigator({
       trackAppLoginFlow: createStackNavigator(trackAppLoginFlowRoutes),
       trackAppMainFlow: createBottomTabNavigator({
-        trackListFlow: createStackNavigator(trackAppListRoutes),
+        trackListFlow,
         ...trackAppMainFlowRoutes,
       }),
     }),
